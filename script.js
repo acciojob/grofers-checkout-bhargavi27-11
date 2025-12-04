@@ -1,43 +1,35 @@
-// Create the button
 const getSumBtn = document.createElement("button");
 getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
-// Function to calculate and show the total price
 const getSum = () => {
-    // Get all price cells
-    const priceCells = document.querySelectorAll(".prices");
-    let total = 0;
+    // Get all cells that contain prices
+    const priceCells = document.querySelectorAll(".price");
+    let sum = 0;
 
-    // Sum all prices
-    priceCells.forEach((cell) => {
-        const value = Number(cell.textContent);
+    // Add all the values
+    for (let i = 0; i < priceCells.length; i++) {
+        const value = Number(priceCells[i].innerText);
         if (!isNaN(value)) {
-            total += value;
+            sum += value;
         }
-    });
-
-    // Get the table
-    const table = document.querySelector("#groceryTable");
-
-    // If a total row already exists, remove it so we don't create duplicates
-    const existingTotalRow = document.querySelector(".total-row");
-    if (existingTotalRow) {
-        existingTotalRow.remove();
     }
 
-    // Create a new row for the total
-    const totalRow = document.createElement("tr");
-    totalRow.classList.add("total-row");
+    // Check if a total row already exists
+    let ansCell = document.getElementById("ans");
+    const table = document.getElementById("groceryTable");
 
-    // Create a single cell spanning both columns
-    const totalCell = document.createElement("td");
-    totalCell.colSpan = 2;
-    totalCell.textContent = Total Price: Rs ${total};
+    if (!ansCell) {
+        const row = document.createElement("tr");
+        ansCell = document.createElement("td");
+        ansCell.id = "ans";
+        ansCell.colSpan = 2;           // single cell spanning both columns
+        row.appendChild(ansCell);
+        table.appendChild(row);
+    }
 
-    totalRow.appendChild(totalCell);
-    table.appendChild(totalRow);
+    // Set / update the total value
+    ansCell.innerText = sum;
 };
 
-// Attach click event to the button
 getSumBtn.addEventListener("click", getSum);
