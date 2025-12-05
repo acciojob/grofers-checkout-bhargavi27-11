@@ -1,6 +1,6 @@
 const getSumbtn = document.createElement('button');
 getSumbtn.append("get total price");
-document.body.appendchild(getSumbtn);
+document.body.appendChild(getSumbtn);
 
 const getsum = () =>{
 	let prices= document.query('.price')
@@ -15,7 +15,7 @@ totalname.textContent="total price"
 totalprice.textContent=`${total}`
 totalrow.append(totalname,totalprice)
 totalrow.id="ans"
-document.querySelector("table").appendchild(totalrow);
+document.querySelector("table").appendChild(totalrow);
 	
 }
 
