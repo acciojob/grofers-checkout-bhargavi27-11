@@ -1,6 +1,6 @@
-const getsumbtn = document.createElement('button');
-getsumbtn.append("get total price");
-document.body.appendchild(getsumbtn);
+const getSumbtn = document.createElement('button');
+getSumbtn.append("get total price");
+document.body.appendchild(getSumbtn);
 
 const getsum = () =>{
 	let prices= document.query('.price')
@@ -19,4 +19,4 @@ document.querySelector("table").appendchild(totalrow);
 	
 }
 
-getsumbtn.addEventListener("click",getsum);
+getSumbtn.addEventListener("click",getsum);
