@@ -1,35 +1,22 @@
-const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
-document.body.appendChild(getSumBtn);
+const getsumbtn = document.createElement('button');
+getsumbtn.append("get total price");
+document.body.appendchild(getsumbtn);
 
-const getSum = () => {
-    // Get all cells that contain prices
-    const priceCells = document.querySelectorAll(".price");
-    let sum = 0;
+const getsum = () =>{
+	let prices= document.query('.price')
+	let total = 0
+prices.foreach((p)=>{
+	total+=parseInt(p.innerText)
+})
+	const totalrow = document.createElement('tr');
+	const totalname = document.createElement("td");
+	const totalprice = document.createElement('td');
+totalname.textContent="total price"
+totalprice.textContent=`${total}`
+totalrow.append(totalname,totalprice)
+totalrow.id="ans"
+document.querySelector("table").appendchild(totalrow);
+	
+}
 
-    // Add all the values
-    for (let i = 0; i < priceCells.length; i++) {
-        const value = Number(priceCells[i].innerText);
-        if (!isNaN(value)) {
-            sum += value;
-        }
-    }
-
-    // Check if a total row already exists
-    let ansCell = document.getElementById("ans");
-    const table = document.getElementById("groceryTable");
-
-    if (!ansCell) {
-        const row = document.createElement("tr");
-        ansCell = document.createElement("td");
-        ansCell.id = "ans";
-        ansCell.colSpan = 2;           // single cell spanning both columns
-        row.appendChild(ansCell);
-        table.appendChild(row);
-    }
-
-    // Set / update the total value
-    ansCell.innerText = sum;
-};
-
-getSumBtn.addEventListener("click", getSum);
+getsumbtn.addEventListener("click",getsum);
